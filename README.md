@@ -1,0 +1,1 @@
+# graphql-hive-contribution-log
