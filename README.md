@@ -1,6 +1,6 @@
-# graphql-hive-contribution-log
+# GraphQL Hive CDN Handler Self-Hosting Contribution Log
 
-# Contribution 1: improved instructions/flow for self-hosting the CDN handler on AWS/CF
+## Contribution 1: improved instructions/flow for self-hosting the CDN handler on AWS/CF
 
 **Contribution Number:** 1  
 **Student:** Lisa Wang  
@@ -9,7 +9,7 @@
 
 ---
 
-## Why I Chose This Issue
+### Why I Chose This Issue
 
 I chose this issue because it focuses on improving the self-hosting instructions and deployment flow for the GraphQL Hive CDN handler on AWS and Cloudflare. From reading the issue, I understand that the current deployment reference is mostly based on the project’s Pulumi deployment configuration, which makes it harder for new self-hosting users to understand how to deploy the CDN handler directly using AWS Lambda or Cloudflare Workers artifacts.
 
@@ -17,21 +17,21 @@ This issue matches my background because I have experience with JavaScript/TypeS
 
 ---
 
-## Understanding the Issue
+### Understanding the Issue
 
-### Problem Description
+#### Problem Description
 
 The project currently does not have clear enough documentation for users who want to self-host the CDN handler on AWS or Cloudflare. The issue says that the main reference today is the Pulumi deployment config, but that is not a straightforward guide for users who want to deploy the handler themselves. The missing pieces appear to be release artifacts for AWS Lambda and Cloudflare Workers, plus instructions for how to deploy and configure those providers.
 
-### Expected Behavior
+#### Expected Behavior
 
 Self-hosting users should be able to find clear instructions explaining how to deploy the CDN handler on AWS Lambda and/or Cloudflare Workers. Ideally, the documentation should explain what artifacts are available, where to find them, what provider configuration is required, and what steps are needed to complete a deployment.
 
-### Current Behavior
+#### Current Behavior
 
 The current guidance is not beginner-friendly for self-hosting users because the deployment reference mainly lives in the project’s Pulumi configuration. Users may need to reverse-engineer the deployment setup instead of following a direct AWS Lambda or Cloudflare Workers guide.
 
-### Affected Components
+#### Affected Components
 
 Initial areas I expect to investigate in Phase II:
 
@@ -45,15 +45,15 @@ Exact files will be confirmed in Phase II after setting up the repository locall
 
 ---
 
-## Reproduction Process
+### Reproduction Process
 
-### Environment Setup
+#### Environment Setup
 
 [TBD in Phase II]
 
 I have not set up the local development environment yet because Phase I focuses on issue selection, README setup, forking the project, and understanding the issue at a high level.
 
-### Steps to Reproduce
+#### Steps to Reproduce
 
 [TBD in Phase II]
 
@@ -66,7 +66,7 @@ Planned initial reproduction / investigation steps:
 5. Check whether AWS Lambda and Cloudflare Workers deployment instructions already exist elsewhere in the docs.
 6. Identify the documentation gap and confirm what a self-hosting user would currently need to infer manually.
 
-### Reproduction Evidence
+#### Reproduction Evidence
 
 - **Commit showing reproduction:** [TBD in Phase II]
 - **Screenshots/logs:** [TBD in Phase II, if applicable]
@@ -74,21 +74,21 @@ Planned initial reproduction / investigation steps:
 
 ---
 
-## Solution Approach
+### Solution Approach
 
-### Analysis
+#### Analysis
 
 [TBD in Phase II]
 
 Preliminary understanding: this is not a runtime bug. It is a documentation and contributor-experience issue. The likely root problem is that deployment knowledge exists in project configuration or maintainer context, but it is not yet translated into a clear self-hosting guide for AWS Lambda and Cloudflare Workers users.
 
-### Proposed Solution
+#### Proposed Solution
 
 [TBD in Phase II]
 
 My expected approach is to first understand the current CDN handler deployment path, then propose a documentation update that explains the self-hosting flow clearly. Depending on what I find in the repository, this may include documenting available release artifacts, explaining AWS Lambda and Cloudflare Workers deployment steps, and pointing users to the correct configuration values.
 
-### Implementation Plan
+#### Implementation Plan
 
 Using UMPIRE framework (adapted):
 
@@ -131,20 +131,20 @@ I will verify the documentation by walking through the instructions as a user wo
 
 ---
 
-## Testing Strategy
+### Testing Strategy
 
-### Unit Tests
+#### Unit Tests
 
 - [ ] [TBD in Phase III] Not expected unless the contribution expands beyond documentation.
 - [ ] [TBD in Phase III] If release artifact generation code changes are needed, add or update relevant tests.
 - [ ] [TBD in Phase III] If docs include commands, verify commands against the repository structure.
 
-### Integration Tests
+#### Integration Tests
 
 - [ ] [TBD in Phase III] Confirm whether the documented AWS Lambda flow matches the existing deployment configuration.
 - [ ] [TBD in Phase III] Confirm whether the documented Cloudflare Workers flow matches the existing deployment configuration.
 
-### Manual Testing
+#### Manual Testing
 
 [TBD in Phase III]
 
@@ -158,9 +158,9 @@ Planned manual validation:
 
 ---
 
-## Implementation Notes
+### Implementation Notes
 
-### Week 1 Progress
+#### Week 1 Progress
 
 Selected GraphQL Hive issue #7762: “improved instructions/flow for self-hosting the CDN handler on AWS/CF.”
 
@@ -173,11 +173,11 @@ Completed Phase I tasks:
 - Forked or prepared to fork the `graphql-hive/console` repository.
 - Prepared to comment on the issue and begin Phase II.
 
-### Week 2 Progress
+#### Week 2 Progress
 
 [TBD in Phase II]
 
-### Code Changes
+#### Code Changes
 
 - **Files modified:** [TBD in Phase II / III]
 - **Key commits:** [TBD in Phase II / III]
@@ -185,7 +185,7 @@ Completed Phase I tasks:
 
 ---
 
-## Pull Request
+### Pull Request
 
 **PR Link:** [TBD in Phase IV]
 
@@ -204,9 +204,9 @@ This PR improves the self-hosting documentation for the CDN handler by clarifyin
 
 ---
 
-## Learnings & Reflections
+### Learnings & Reflections
 
-### Technical Skills Gained
+#### Technical Skills Gained
 
 [TBD in later phases]
 
@@ -217,17 +217,17 @@ Expected learning goals:
 - Practice translating infrastructure configuration into clear user-facing documentation.
 - Improve open source contribution workflow: issue selection, maintainer communication, documentation PRs, and review iteration.
 
-### Challenges Overcome
+#### Challenges Overcome
 
 [TBD in later phases]
 
-### What I'd Do Differently Next Time
+#### What I'd Do Differently Next Time
 
 [TBD in later phases]
 
 ---
 
-## Resources Used
+### Resources Used
 
 - GitHub Issue: https://github.com/graphql-hive/console/issues/7762
 - GraphQL Hive repository: https://github.com/graphql-hive/console
