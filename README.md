@@ -2,9 +2,9 @@
 
 ## Contribution 1: improved instructions/flow for self-hosting the CDN handler on AWS/CF
 
-**Contribution Number:** 1
-**Student:** Lisa Wang
-**Issue:** https://github.com/graphql-hive/console/issues/7762
+**Contribution Number:** 1  
+**Student:** Lisa Wang  
+**Issue:** https://github.com/graphql-hive/console/issues/7762  
 **Status:** Phase II Complete
 
 ---
@@ -531,3 +531,59 @@ Next time, I would check the package-level `package.json` earlier to identify th
 - CodePath AI301 Phase I instructions
 - CodePath AI301 Phase II instructions
 - My previous AWS Lambda, Docker, and backend/cloud infrastructure experience
+
+---
+
+### AI Agent Handoff Notes for Phase III
+
+For the next phase, start from the conclusion that this is a documentation-gap issue, not a runtime bug.
+
+Current confirmed state:
+
+- The target issue is GraphQL Hive #7762: improved instructions/flow for self-hosting the CDN handler on AWS/CF.
+- Working branch: `docs/self-host-cdn-handler-7762`.
+- The most likely file to update is `packages/services/cdn-worker/README.md`.
+- Local setup has already been completed with:
+  - Node v24.14.1
+  - pnpm v10.33.2 through Corepack
+  - root `.env` containing `ENVIRONMENT=local`
+  - successful `pnpm i`
+
+- `nvm use` failed because there is no root `.nvmrc`, so use `nvm use 24.14.1`.
+- If plain `pnpm` is unavailable, use `corepack pnpm`.
+
+Files already inspected:
+
+- `packages/services/cdn-worker/README.md`
+- `packages/services/cdn-worker/package.json`
+- `packages/services/cdn-worker/build.mjs`
+- `packages/services/server/src/environment.ts`
+- `packages/services/server/src/index.ts`
+- `packages/services/api/src/modules/cdn/providers/cdn.provider.ts`
+- `packages/services/api/src/modules/cdn/providers/tokens.ts`
+
+Verified commands:
+
+```bash
+corepack pnpm --filter @hive/cdn-script build
+corepack pnpm --filter @hive/cdn-script typecheck
+```
+
+Both completed successfully.
+
+Build artifacts confirmed:
+
+- `packages/services/cdn-worker/dist/index.worker.mjs`
+- `packages/services/cdn-worker/dist/index.lambda.mjs`
+- `packages/services/cdn-worker/dist/index.nodejs.js`
+
+Phase III should focus on improving `packages/services/cdn-worker/README.md` by clarifying:
+
+1. How to build the CDN worker.
+2. Which artifact maps to Cloudflare Worker vs AWS Lambda.
+3. Required environment variables for each provider.
+4. How Hive server should be configured to point to the deployed CDN endpoint.
+5. How to verify the `/artifacts/v1/*` route.
+6. Whether release archives/artifacts should be documented now or deferred after maintainer clarification.
+
+Important nuance: do not claim that there is no CDN worker documentation. There is partial documentation. The actual issue is that the end-to-end self-hosting flow is incomplete and fragmented across multiple files.
