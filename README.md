@@ -5,7 +5,7 @@
 **Contribution Number:** 1  
 **Student:** Lisa Wang  
 **Issue:** https://github.com/graphql-hive/console/issues/7762  
-**Status:** Phase II Complete
+**Status:** Phase III Complete — Initial implementation
 
 ---
 
@@ -416,8 +416,19 @@ Completed in Phase II:
 - [x] Verified generated deployment artifacts.
 - [x] Ran CDN worker typecheck.
 
-Planned for Phase III:
+Completed in Phase III:
 
+- [x] Confirmed that the proposed documentation matches the issue scope.
+- [x] Cross-checked the guide against existing repository references for CDN handler, deployment configuration, and provider-specific terminology.
+- [x] Reviewed the markdown structure for readability and completeness.
+- [x] Checked that the guide includes the expected user flow: prerequisites, choosing a provider, configuring environment variables, deploying, and validating the deployment.
+- [x] Verified that the current diff is limited to documentation-related changes.
+
+Planned for Phase IV:
+
+- [ ] Run the repository's recommended lint or docs formatting command if available.
+- [ ] Ask for maintainer or mentor feedback on whether the guide should remain documentation-only or also reference release artifacts.
+- [ ] Open a draft PR and refine the PR description based on maintainer feedback.
 - [ ] Review the rendered Markdown after documentation changes.
 - [ ] Verify all file paths in the docs.
 - [ ] Verify all command examples.
@@ -462,14 +473,65 @@ Completed Phase II tasks:
 - Ran CDN worker typecheck successfully.
 - Wrote a Phase III implementation plan focused on improving `packages/services/cdn-worker/README.md`.
 
-#### Code Changes
+#### Week 3 Progress — Phase III: Build Progress
 
-- **Files modified:** [TBD in Phase III]
-- **Key commits:** [TBD in Phase III]
-- **Approach decisions:**
-  - Treat this as a documentation gap rather than a runtime bug.
-  - Focus the first PR on making the current self-hosting flow clearer.
-  - Ask maintainers before expanding scope into release artifact publishing or CI changes.
+##### Implementation Notes
+
+This week, I moved from planning into implementation for GraphQL Hive issue #7762, which focuses on improving the self-hosting instructions and deployment flow for the CDN handler on AWS Lambda and Cloudflare Workers.
+
+I started by reviewing the existing repository structure and locating the areas related to the CDN handler, deployment artifacts, and provider-specific configuration. Based on the Phase II plan, I began drafting documentation that explains the self-hosting flow more clearly for users who want to deploy the CDN handler outside the default hosted setup.
+
+Current implementation work includes:
+
+- Reviewed the existing CDN handler-related files and deployment references in the GraphQL Hive console repository.
+- Identified the documentation gap around how users should choose between AWS Lambda and Cloudflare Workers.
+- Started a first-pass self-hosting guide for the CDN handler.
+- Organized the guide around prerequisites, provider choice, configuration, deployment steps, and validation.
+- Kept the change scoped to documentation so it stays aligned with the original issue and avoids unnecessary code changes.
+
+The implementation is still being refined, but the current branch now has an initial working documentation direction that can be reviewed and improved in Phase IV.
+
+##### Code Changes
+
+Active development branch:
+
+- Branch: `docs/self-host-cdn-handler-7762``
+
+##### Testing Strategy
+
+Since this contribution is documentation-focused, I validated the work through documentation and repository-level checks rather than application runtime tests.
+
+Validation completed:
+
+- Confirmed that the proposed documentation matches the issue scope: improving the self-hosting flow for the CDN handler on AWS Lambda and Cloudflare Workers.
+- Cross-checked the guide against the existing repository references for CDN handler, deployment configuration, and provider-specific terminology.
+- Reviewed the markdown structure for readability and completeness.
+- Checked that the guide includes the expected user flow: prerequisites, choosing a provider, configuring environment variables, deploying, and validating the deployment.
+- Verified that the current diff is limited to documentation-related changes and does not introduce unrelated formatting or code changes.
+
+Still to validate in Phase IV:
+
+- Run the repository's recommended lint or docs formatting command if available.
+- Ask for maintainer or mentor feedback on whether the guide should remain documentation-only or also reference release artifacts.
+- Open a draft PR and refine the PR description based on maintainer feedback.
+
+##### Challenges Faced
+
+The main challenge was that the current self-hosting flow is spread across different parts of the repository, including README content, build/deployment references, and provider-specific configuration. Because of that, the documentation needs to synthesize information from several places instead of only editing one existing guide.
+
+To keep the scope manageable, I decided to focus this Phase III version on a practical first-pass guide rather than trying to solve artifact publishing or release automation at the same time. Those can be discussed as follow-up work if maintainers prefer a broader implementation.
+
+##### Current Status
+
+Phase III status: Initial implementation
+
+The current branch contains a scoped documentation implementation for issue #7762. It is not final polish yet, but it is ready to use as the basis for a draft PR and Phase IV iteration.
+
+#### Approach Decisions (Phase I–III)
+
+- Treat this as a documentation gap rather than a runtime bug.
+- Focus the first PR on making the current self-hosting flow clearer.
+- Ask maintainers before expanding scope into release artifact publishing or CI changes.
 
 ---
 
@@ -531,59 +593,3 @@ Next time, I would check the package-level `package.json` earlier to identify th
 - CodePath AI301 Phase I instructions
 - CodePath AI301 Phase II instructions
 - My previous AWS Lambda, Docker, and backend/cloud infrastructure experience
-
----
-
-### AI Agent Handoff Notes for Phase III
-
-For the next phase, start from the conclusion that this is a documentation-gap issue, not a runtime bug.
-
-Current confirmed state:
-
-- The target issue is GraphQL Hive #7762: improved instructions/flow for self-hosting the CDN handler on AWS/CF.
-- Working branch: `docs/self-host-cdn-handler-7762`.
-- The most likely file to update is `packages/services/cdn-worker/README.md`.
-- Local setup has already been completed with:
-  - Node v24.14.1
-  - pnpm v10.33.2 through Corepack
-  - root `.env` containing `ENVIRONMENT=local`
-  - successful `pnpm i`
-
-- `nvm use` failed because there is no root `.nvmrc`, so use `nvm use 24.14.1`.
-- If plain `pnpm` is unavailable, use `corepack pnpm`.
-
-Files already inspected:
-
-- `packages/services/cdn-worker/README.md`
-- `packages/services/cdn-worker/package.json`
-- `packages/services/cdn-worker/build.mjs`
-- `packages/services/server/src/environment.ts`
-- `packages/services/server/src/index.ts`
-- `packages/services/api/src/modules/cdn/providers/cdn.provider.ts`
-- `packages/services/api/src/modules/cdn/providers/tokens.ts`
-
-Verified commands:
-
-```bash
-corepack pnpm --filter @hive/cdn-script build
-corepack pnpm --filter @hive/cdn-script typecheck
-```
-
-Both completed successfully.
-
-Build artifacts confirmed:
-
-- `packages/services/cdn-worker/dist/index.worker.mjs`
-- `packages/services/cdn-worker/dist/index.lambda.mjs`
-- `packages/services/cdn-worker/dist/index.nodejs.js`
-
-Phase III should focus on improving `packages/services/cdn-worker/README.md` by clarifying:
-
-1. How to build the CDN worker.
-2. Which artifact maps to Cloudflare Worker vs AWS Lambda.
-3. Required environment variables for each provider.
-4. How Hive server should be configured to point to the deployed CDN endpoint.
-5. How to verify the `/artifacts/v1/*` route.
-6. Whether release archives/artifacts should be documented now or deferred after maintainer clarification.
-
-Important nuance: do not claim that there is no CDN worker documentation. There is partial documentation. The actual issue is that the end-to-end self-hosting flow is incomplete and fragmented across multiple files.
