@@ -495,7 +495,7 @@ The implementation is still being refined, but the current branch now has an ini
 
 Active development branch:
 
-- Branch: `docs/self-host-cdn-handler-7762``
+- Branch: `docs/self-host-cdn-handler-7762`
 
 ##### Testing Strategy
 
@@ -527,6 +527,38 @@ Phase III status: Initial implementation
 
 The current branch contains a scoped documentation implementation for issue #7762. It is not final polish yet, but it is ready to use as the basis for a draft PR and Phase IV iteration.
 
+#### Week 4 Progress Update — Phase IV In Progress
+
+I am currently treating this as a progress checkpoint while I prepare the branch for a review-ready upstream pull request.
+
+##### Current Status
+
+- Phase: Phase III complete / preparing for Phase IV submission
+- PR status: Not submitted yet
+- Current work: I have been working on the implementation locally on my forked branch and preparing it for review.
+- Next milestone: Open the upstream PR after final validation and cleanup.
+
+##### Progress Since Last Update
+
+- Continued working through the implementation for the selected issue.
+- Reviewed the relevant parts of the codebase to understand the existing patterns and avoid unrelated changes.
+- Made progress on the planned documentation fix and am preparing the branch for final checks.
+- Began organizing this README so the contribution path is documented clearly.
+
+##### Remaining Work Before PR
+
+Before opening the PR, I still need to:
+
+- Re-run the relevant validation steps.
+- Review the final diff to make sure there are no unrelated changes.
+- Clean up any temporary debugging code or comments.
+- Write a clear PR description that explains the problem, the fix, and the testing evidence.
+- Submit the PR to the upstream repository.
+
+##### Expected Next Step
+
+My next step is to finish the final pre-submission checks and open the pull request. After the PR is submitted, I will update this README with the PR link, PR description, maintainer feedback status, and mark Phase IV complete.
+
 #### Approach Decisions (Phase I–III)
 
 - Treat this as a documentation gap rather than a runtime bug.
@@ -537,9 +569,9 @@ The current branch contains a scoped documentation implementation for issue #776
 
 ### Pull Request
 
-**PR Link:** [TBD in Phase IV]
+**PR Link:** [TBD after upstream PR submission]
 
-**PR Description:** [TBD in Phase IV]
+**PR Description:** [Draft in progress]
 
 Potential draft:
 
@@ -550,7 +582,7 @@ This PR improves the self-hosting documentation for the GraphQL Hive CDN handler
 - [TBD]: [Summary of feedback received]
 - [TBD]: [How I addressed it]
 
-**Status:** [TBD in Phase IV]
+**Status:** Preparing branch for upstream PR submission.
 
 ---
 
